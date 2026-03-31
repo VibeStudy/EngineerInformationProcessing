@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(pdftotext \"/Users/nouyeong/Desktop/EngineerInformationProcessing/기출문제/2026 대비/정보처리기사필기_01_필수계산41문제.pdf\" \"/Users/nouyeong/Desktop/EngineerInformationProcessing/기출문제/2026 대비/정보처리기사필기_01_필수계산41문제.txt\")",
+      "Bash(pdftotext '/Users/nouyeong/Desktop/EngineerInformationProcessing/기출문제/2026 대비/정보처리기사필기_01_필수계산41문제.pdf' -)",
+      "Bash(pdftotext \"/Users/nouyeong/Desktop/EngineerInformationProcessing/기출문제/2026 대비/pdf/정보처리기사필기_02_필수코드57문제.pdf\" -)"
+    ],
+    "additionalDirectories": [
+      "/Users/nouyeong/공기업 준비/EngineerInformationProcessing/기출문제/2026 대비/markdown"
+    ]
+  }
+}
