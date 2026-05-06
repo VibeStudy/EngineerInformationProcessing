@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>정보처리기사 필기 — 필수 코드 57문제</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;background:#f4f4f0;color:#1a1a1a;min-height:100vh;padding:1.5rem 1rem}
+.wrap{max-width:740px;margin:0 auto}
+h1{font-size:1.35rem;font-weight:700;margin-bottom:0.25rem}
+.subtitle{font-size:0.82rem;color:#888;margin-bottom:1.2rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1rem}
+.stat{background:#fff;border-radius:10px;padding:0.65rem 0.4rem;text-align:center;border:1px solid #e8e8e8}
+.stat-num{font-size:1.35rem;font-weight:700;color:#1a1a1a}
+.stat.co .stat-num{color:#2a7d32}
+.stat.wr .stat-num{color:#c62828}
+.stat.re .stat-num{color:#1455b5}
+.stat-label{font-size:0.68rem;color:#999;margin-top:1px}
+.prog-bg{height:6px;background:#e0e0e0;border-radius:3px;margin-bottom:1.4rem}
+.prog-fill{height:6px;background:#1455b5;border-radius:3px;transition:width .35s}
+.qcard{background:#fff;border-radius:13px;padding:1.2rem 1.3rem;margin-bottom:1rem;border:1px solid #e8e8e8}
+.qmeta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0.55rem}
+.badge{font-size:0.68rem;padding:2px 8px;border-radius:20px;background:#f2f2f2;color:#666;border:1px solid #e0e0e0}
+.badge.n{background:#e3ebfd;color:#1455b5;border-color:#b8cefc}
+.qtext{font-size:0.92rem;line-height:1.72;margin-bottom:0.9rem;white-space:pre-wrap}
+.code{background:#1e1e2e;color:#cdd6f4;font-family:monospace;font-size:0.78rem;padding:0.85rem;border-radius:8px;margin:0.4rem 0 0.9rem;overflow-x:auto;white-space:pre;line-height:1.6}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{width:100%;text-align:left;padding:0.65rem 0.95rem;border-radius:8px;border:1.5px solid #ddd;background:#fff;cursor:pointer;font-size:0.86rem;color:#1a1a1a;line-height:1.5;transition:all .12s;font-family:inherit}
+.opt:hover:not(:disabled){background:#f0f5ff;border-color:#8fb5fd}
+.opt.ok{background:#e8f5e9;border-color:#43a047;color:#1b5e20;font-weight:600}
+.opt.ng{background:#ffebee;border-color:#e53935;color:#b71c1c}
+.opt.hi{background:#fff8e1;border-color:#ffa000}
+.opt:disabled{cursor:default}
+.explain{margin-top:0.75rem;padding:0.65rem 0.9rem;background:#f0f7ff;border-left:3px solid #1455b5;border-radius:0 8px 8px 0;font-size:0.8rem;color:#333;line-height:1.65}
+.nav{display:flex;justify-content:space-between;align-items:center;margin:1.1rem 0}
+.nbtn{padding:0.5rem 1.3rem;border-radius:8px;border:1.5px solid #ccc;background:#fff;cursor:pointer;font-size:0.86rem;color:#333;font-family:inherit;transition:all .12s}
+.nbtn:hover:not(:disabled){background:#f0f0f0}
+.nbtn:disabled{opacity:.35;cursor:default}
+.nbtn.pr{background:#1455b5;border-color:#1455b5;color:#fff;font-weight:600}
+.nbtn.pr:hover:not(:disabled){background:#0d47a1}
+.pinfo{font-size:0.8rem;color:#aaa}
+#rarea{display:none}
+.rbox{background:#fff;border-radius:13px;padding:1.4rem;margin-bottom:1rem;border:1px solid #e8e8e8}
+.rscore{text-align:center;padding:1rem 0}
+.rnum{font-size:2.8rem;font-weight:800;color:#1455b5}
+.rsub{font-size:0.88rem;color:#888;margin-top:4px}
+.verdict{text-align:center;padding:0.6rem 1rem;border-radius:8px;font-size:0.86rem;margin-top:0.8rem;font-weight:500}
+.vp{background:#e8f5e9;color:#2a7d32;border:1px solid #a5d6a7}
+.vf{background:#ffebee;color:#c62828;border:1px solid #ef9a9a}
+.wtitle{font-size:0.95rem;font-weight:700;margin-bottom:0.9rem;padding-bottom:0.5rem;border-bottom:2px solid #ffcdd2}
+.witem{border-left:3px solid #e53935;padding:0.75rem 0.9rem;margin-bottom:0.75rem;background:#fff9f9;border-radius:0 8px 8px 0}
+.wq{font-size:0.82rem;color:#1a1a1a;margin-bottom:0.35rem;line-height:1.5}
+.wa{font-size:0.76rem;color:#666;margin-top:3px}
+.wex{font-size:0.73rem;color:#777;margin-top:5px;line-height:1.5}
+.rbtn{display:block;width:100%;padding:0.75rem;border-radius:10px;background:#1455b5;color:#fff;border:none;font-size:0.92rem;font-weight:600;cursor:pointer;margin-top:0.8rem;font-family:inherit}
+.rbtn:hover{background:#0d47a1}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>💻 정보처리기사 필기 — 필수 코드 57문제</h1>
+<p class="subtitle">총 57문제 · 5문제씩 · C / Java / Python / SQL 코드 추적</p>
+<div class="stats">
+  <div class="stat"><div class="stat-num" id="st">0</div><div class="stat-label">푼 문제</div></div>
+  <div class="stat co"><div class="stat-num" id="sc">0</div><div class="stat-label">정답</div></div>
+  <div class="stat wr"><div class="stat-num" id="sw">0</div><div class="stat-label">오답</div></div>
+  <div class="stat re"><div class="stat-num" id="sr">57</div><div class="stat-label">남은 문제</div></div>
+</div>
+<div class="prog-bg"><div class="prog-fill" id="pbar" style="width:0%"></div></div>
+<div id="qa"></div>
+<div class="nav">
+  <button class="nbtn" id="bp" onclick="gp(-1)">◀ 이전</button>
+  <span class="pinfo" id="pi"></span>
+  <button class="nbtn pr" id="bn" onclick="gp(1)">다음 ▶</button>
+</div>
+<div id="rarea">
+  <div class="rbox">
+    <div class="rscore"><div class="rnum" id="rsc"></div><div class="rsub" id="rsb"></div><div class="verdict" id="rv"></div></div>
+  </div>
+  <div class="rbox" id="wb" style="display:none">
+    <div class="wtitle">❌ 틀린 문제 목록</div>
+    <div id="wl"></div>
+  </div>
+  <button class="rbtn" onclick="reset()">🔄 처음부터 다시 풀기</button>
+</div>
+</div>
+<script>
+const Q=[
+{n:1,s:"C언어",q:"다음 C언어 프로그램이 실행되었을 때의 결과는?\n\n#include <stdio.h>\n#include <stdlib.h>\nint main(int argc, char* argv[]) {\n    char str1[20] = \"KOREA\";\n    char str2[20] = \"LOVE\";\n    char *p1 = NULL, *p2 = NULL;\n    p1 = str1; p2 = str2;\n    str1[1] = p2[2];\n    str2[3] = p1[4];\n    strcat(str1, str2);\n    printf(\"%c\", *(p1 + 2));\n    return 0;\n}",o:["E","V","R","O"],a:2,e:"str1[1]=p2[2]='V'→str1='KVREA' / str2[3]=p1[4]='A'→str2='LOVA' / strcat→'KVREALOVA' / *(p1+2)=str1[2]='R'"},
+{n:2,s:"C언어",q:"다음 C언어 프로그램이 실행되었을 때의 결과는?\n\n#include <stdio.h>\nint main(int argc, char* argv[]) {\n    int arr[2][3] = { 1,2,3,4,5,6 };\n    int (*p)[3] = NULL;\n    p = arr;\n    printf(\"%d, \", *(p[0]+1) + *(p[1]+2));\n    printf(\"%d\", *(*(p+1)+0) + *(*(p+1)+1));\n    return 0;\n}",o:["7, 5","8, 5","8, 9","7, 9"],a:2,e:"*(p[0]+1)=arr[0][1]=2, *(p[1]+2)=arr[1][2]=6 → 합=8 / *(*(p+1)+0)=arr[1][0]=4, *(*(p+1)+1)=arr[1][1]=5 → 합=9"},
+{n:3,s:"C언어",q:"C 언어에서 다음 선언 후 배열 b[5]의 값은?\n\nstatic int b[9] = {1, 2, 3};",o:["0","1","2","3"],a:0,e:"static 변수: 명시적으로 초기화하지 않은 나머지 요소는 0으로 자동 초기화 / b[3]~b[8] = 0"},
+{n:4,s:"C언어",q:"다음 C언어 프로그램이 실행되었을 때의 결과는?\n\n#include <stdio.h>\nint main(int argc, char *argv[]) {\n    int a[2][2] = {{11,22},{44,55}};\n    int i, sum = 0;\n    int *p;\n    p = a[0];\n    for(i = 1; i < 4; i++)\n        sum += *(p + i);\n    printf(\"%d\", sum);\n    return 0;\n}",o:["55","77","121","132"],a:2,e:"p=a[0]=&11 / i=1:*(p+1)=22 / i=2:*(p+2)=44 / i=3:*(p+3)=55 / sum=22+44+55=121"},
+{n:5,s:"C언어",q:"밑줄 친 '!a && !b'와 동일한 의미는?\n\n#include <stdio.h>\nmain() {\n    int a, b;\n    for (a = 0; a < 2; a++)\n        for (b = 0; b < 2; b++)\n            printf(\"%d\", !a && !b);\n}",o:["!a || !b","!(a || b)","a && b","a || b"],a:1,e:"드모르강 법칙: !a && !b = !(a || b)"},
+{n:6,s:"C언어",q:"다음 C언어 프로그램이 실행되었을 때의 결과는?\n\n#include <stdio.h>\nint main(int argc, char *argv[]) {\n    char a;\n    a = 'A' + 1;\n    printf(\"%d\", a);\n    return 0;\n}",o:["1","11","66","98"],a:2,e:"'A'의 ASCII=65 / a=65+1=66 / %d 출력 → 66"},
+{n:7,s:"C언어",q:"다음 C언어 프로그램이 실행되었을 때의 결과는?\n\nmain(void) {\n    int i, sum = 0;\n    for(i = 1; i <= 10; i = i + 2)\n        sum = sum + i;\n    printf(\"%d\", sum);\n}",o:["15","19","25","27"],a:2,e:"i=1,3,5,7,9 홀수 합산: 1+3+5+7+9=25"},
+{n:8,s:"C언어",q:"다음 C언어 프로그램이 실행되었을 때의 결과는?\n\n#include <stdio.h>\nint main(int argc, char *argv[]) {\n    int a = 4, b = 7;\n    int c = a | b;\n    printf(\"%d\", c);\n    return 0;\n}",o:["3","4","7","10"],a:2,e:"비트 OR: 4(0100) | 7(0111) = 0111 = 7"},
+{n:9,s:"C언어",q:"다음 C언어 프로그램이 실행되었을 때의 결과는?\n\n#include <stdio.h>\nstruct st { int a; int c[10]; };\nint main(int argc, char* argv[]) {\n    int i = 0;\n    struct st ob1, ob2;\n    ob1.a = 0; ob2.a = 0;\n    for (i = 0; i < 10; i++) {\n        ob1.c[i] = i;\n        ob2.c[i] = ob1.c[i] + i;\n    }\n    for (i = 0; i < 10; i = i + 2) {\n        ob1.a += ob1.c[i];\n        ob2.a += ob2.c[i];\n    }\n    printf(\"%d\", ob1.a + ob2.a);\n    return 0;\n}",o:["30","60","80","120"],a:1,e:"ob1.c[i]=i, ob2.c[i]=2i / i=0,2,4,6,8: ob1.a=0+2+4+6+8=20, ob2.a=0+4+8+12+16=40 / 합=60"},
+{n:10,s:"C언어",q:"다음 C언어 프로그램이 실행되었을 때의 결과는?\n\n#include <stdio.h>\nint main(void) {\n    int n = 4;\n    int* pt = NULL;\n    pt = &n;\n    printf(\"%d\", &n + *pt - *&pt + n);\n    return 0;\n}",o:["0","4","8","12"],a:2,e:"&n + *pt - *&pt + n = &n + 4 - &n + 4 = 8 (주소값 상쇄)"},
+{n:11,s:"C언어",q:"a=1, b=2일 때 다음 식의 결과는?\n\na < b + 2 && a << 1 <= b",o:["0","1","3","5"],a:1,e:"우선순위: 산술>시프트>관계>논리 / b+2=4, a<<1=2 / 1<4=참(1), 2<=2=참(1) / 1&&1=1"},
+{n:12,s:"C언어",q:"a[0]의 주소값이 10일 때 (int 크기=4Byte) 다음 프로그램의 결과는?\n\n#include <stdio.h>\nint main(int argc, char* argv[]) {\n    int a[] = { 14,22,30,38 };\n    printf(\"%u, \", &a[2]);\n    printf(\"%u\", a);\n    return 0;\n}",o:["14, 10","14, M","18, 10","18, M"],a:2,e:"&a[2] = 10 + (2×4) = 18 / a(배열명) = 배열 시작 주소 = 10"},
+{n:13,s:"C언어",q:"다음 C언어 프로그램이 실행되었을 때의 결과는?\n\n#include <stdio.h>\nint main(int argc, char* argv[]) {\n    int n1=1, n2=2, n3=3;\n    int r1, r2, r3;\n    r1 = (n2 <= 2) || (n3 > 3);\n    r2 = !n3;\n    r3 = (n1 > 1) && (n2 < 3);\n    printf(\"%d\", r3 - r2 + r1);\n    return 0;\n}",o:["0","1","2","3"],a:1,e:"r1=(2<=2)||(3>3)=1||0=1 / r2=!3=0 / r3=(1>1)&&(2<3)=0&&1=0 / 0-0+1=1"},
+{n:14,s:"C언어",q:"다음 C언어 프로그램이 실행되었을 때의 결과는?\n\n#include <stdio.h>\n#include <string.h>\nint main(void) {\n    char str[50] = \"nation\";\n    char *p2 = \"alter\";\n    strcat(str, p2);\n    printf(\"%s\", str);\n    return 0;\n}",o:["nation","nationalter","alter","alternation"],a:1,e:"strcat(str, p2): str 뒤에 p2 연결 → \"nation\"+\"alter\" = \"nationalter\""},
+{n:15,s:"C언어",q:"다음 C언어 프로그램이 실행되었을 때의 결과는?\n\n#include <stdio.h>\nint main(int argc, char* argv[]) {\n    int i = 0;\n    while (1) {\n        if (i == 4) break;\n        ++i;\n    }\n    printf(\"i = %d\", i);\n}",o:["i = 0","i = 1","i = 3","i = 4"],a:3,e:"++i 반복: i=1,2,3,4 → i==4 조건 참 → break 탈출 → i=4 출력"},
+{n:16,s:"C언어",q:"'c'를 입력했을 때 다음 C언어 프로그램의 출력 결과는?\n\n#include <stdio.h>\nmain() {\n    char ch;\n    scanf(\"%c\", &ch);\n    switch (ch) {\n        case 'a': printf(\"one \");\n        case 'b': printf(\"two \");\n        case 'c': printf(\"three \"); break;\n        case 'd': printf(\"four \"); break;\n    }\n}",o:["one","one two","three","one two three four"],a:2,e:"ch='c'이므로 case 'c'로 분기 → 'three ' 출력 후 break → 종료 (fall-through 없음)"},
+{n:17,s:"Java",q:"다음 if-else를 삼항 조건 연산자로 옳게 표현한 것은?\n\nint i = 7, j = 9;\nint k;\nif (i > j)\n    k = i - j;\nelse\n    k = i + j;",o:["k = (i > j) ? (i - j) : (i + j);","k = (i < j) ? (i - j) : (i + j);","k = (i > j) ? (i + j) : (i - j);","k = (i < j) ? (i + j) : (i - j);"],a:0,e:"삼항: 조건 ? 참 : 거짓 / i>j이면 i-j, 아니면 i+j → (i>j)?(i-j):(i+j)"},
+{n:18,s:"Java",q:"다음 Java 프로그램이 실행되었을 때의 결과는?\n\npublic class ovr {\n    public static void main(String[] args) {\n        int arr[] = new int[10];\n        int i = 0;\n        arr[0] = 0; arr[1] = 1;\n        while(i < 8) {\n            arr[i+2] = arr[i+1] + arr[i];\n            i++;\n        }\n        System.out.println(arr[9]);\n    }\n}",o:["13","21","34","55"],a:2,e:"피보나치: 0,1,1,2,3,5,8,13,21,34 / arr[9]=34"},
+{n:19,s:"Java",q:"다음 Java 코드의 실행 결과는?\n\nSystem.out.println(\"5 + 2 = \" + 3 + 4);\nSystem.out.println(\"5 + 2 = \" + (3 + 4));",o:["5 + 2 = 34 / 5 + 2 = 34","5 + 2 + 3 + 4 / 5 + 2 = 7","7 = 7 / 7 + 7","5 + 2 = 34 / 5 + 2 = 7"],a:3,e:"1번: 문자열+3='...=3', +4='...=34' / 2번: (3+4)=7 먼저, '...=7'"},
+{n:20,s:"Java",q:"다음 Java 프로그램이 실행되었을 때의 결과는?\n\npublic class Ape {\n    static void rs(char a[]) {\n        for(int i = 0; i < a.length; i++)\n            if(a[i] == 'B') a[i] = 'C';\n            else if(i == a.length-1) a[i] = a[i-1];\n            else a[i] = a[i+1];\n    }\n    static void pca(char a[]) {\n        for(int i = 0; i < a.length; i++)\n            System.out.print(a[i]);\n        System.out.println();\n    }\n    public static void main(String[] args) {\n        char c[] = {'A','B','D','D','A','B','C'};\n        rs(c); pca(c);\n    }\n}",o:["BCDABCA","BCDABCC","CDDACCC","CDDACCA"],a:1,e:"i=0:A→a[1]='B' / i=1:B→'C' / i=2:D→a[3]='D' / i=3:D→a[4]='A' / i=4:A→a[5]='B' / i=5:B→'C' / i=6:마지막→a[5]='C' → BCDABCC"},
+{n:21,s:"Java",q:"다음 Java 프로그램이 실행되었을 때의 결과는?\n\npublic class ovr {\n    public static void main(String[] args) {\n        int a=1, b=2, c=3, d=4;\n        int mx, mn;\n        mx = a < b ? b : a;\n        if (mx == 1) {\n            mn = a > mx ? b : a;\n        } else {\n            mn = b < mx ? d : c;\n        }\n        System.out.println(mn);\n    }\n}",o:["1","2","3","4"],a:2,e:"mx=(1<2)?2:1=2 / mx≠1 → else: mn=(2<2)?4:3=3"},
+{n:22,s:"Java",q:"다음 Java 프로그램이 실행되었을 때의 결과는?\n\npublic class Rarr {\n    static int[] marr() {\n        int temp[] = new int[4];\n        for (int i = 0; i < temp.length; i++)\n            temp[i] = i;\n        return temp;\n    }\n    public static void main(String[] args) {\n        int iarr[];\n        iarr = marr();\n        for (int i = 0; i < iarr.length; i++)\n            System.out.print(iarr[i] + \" \");\n    }\n}",o:["1 2 3 4","0 1 2 3","1 2 3","0 1 2"],a:1,e:"temp[i]=i → [0,1,2,3] 반환 / 출력: 0 1 2 3"},
+{n:23,s:"Java",q:"다음 Java 프로그램이 실행되었을 때의 결과는?\n\npublic class array1 {\n    public static void main(String[] args) {\n        int cnt = 0;\n        do {\n            cnt++;\n        } while (cnt < 0);\n        if(cnt == 1) cnt++;\n        else cnt = cnt + 3;\n        System.out.printf(\"%d\", cnt);\n    }\n}",o:["2","3","4","5"],a:0,e:"do-while: 1회 실행→cnt=1, 1<0 거짓→종료 / cnt==1 참 → cnt++=2"},
+{n:24,s:"Java",q:"다음 Java 프로그램이 실행되었을 때의 결과는?\n\npublic class Operator {\n    public static void main(String[] args) {\n        int x = 5, y = 0, z = 0;\n        y = x++;\n        z = --x;\n        System.out.print(x + \", \" + y + \", \" + z);\n    }\n}",o:["5, 5, 5","5, 6, 5","6, 5, 5","5, 6, 4"],a:0,e:"y=x++(후위): y=5, x=6 / z=--x(전위): x=5, z=5 / 출력: 5, 5, 5"},
+{n:25,s:"Java",q:"다음 Java 코드의 실행 결과는?\n\nint x = 1, y = 6;\nwhile (y--) {\n    x++;\n}\nSystem.out.println(\"x=\" + x + \"y=\" + y);",o:["x=7 y=0","x=6 y=-1","x=7 y=-1","Unresolved compilation problem 오류 발생"],a:3,e:"Java에서 while 조건식은 boolean 타입 필수. y--(int 반환)는 사용 불가 → 컴파일 오류"},
+{n:26,s:"Python",q:"다음 Python 코드의 실행 결과는?\n\na = [0,10,20,30,40,50,60,70,80,90]\na[:7:2]",o:["[20, 60]","[60, 20]","[0, 20, 40, 60]","[10, 30, 50, 70]"],a:2,e:"a[:7:2]: 인덱스 0~6까지 2씩 증가 → [0](0), [2](20), [4](40), [6](60) = [0,20,40,60]"},
+{n:27,s:"Python",q:"다음 Python 프로그램이 실행되었을 때의 결과는?\n\ndef cs(n):\n    s = 0\n    for num in range(n+1):\n        s += num\n    return s\nprint(cs(11))",o:["45","55","66","78"],a:2,e:"range(12) → 0~11 합산 = 0+1+2+...+11 = 66"},
+{n:28,s:"Python",q:"다음 Python 프로그램의 실행 결과로 옳은 것은?\n\nwhile(True):\n    print('A')\n    print('B')\n    print('C')\n    continue\n    print('D')",o:["A, B, C 출력이 반복된다.","A, B, C","A, B, C, D 출력이 반복된다.","A, B, C, D 까지만 출력된다."],a:0,e:"while(True): 무한 반복 / continue: 이후 코드 건너뜀 → D는 절대 실행 안 됨 → A,B,C 무한 반복"},
+{n:29,s:"Python",q:"처음 3글자와 끝 3글자를 합쳐서 출력하는 ㉠에 들어갈 내용은?\n\nString = input('7문자 이상 문자열을 입력하시오:')\nm = ( ㉠ )\nprint(m)",o:["string[1:3]+string[-3:]","string[:3]+string[-3:-1]","string[0:3]+string[-3:]","string[0:]+string[:-1]"],a:2,e:"string[0:3]: 인덱스 0,1,2(처음 3글자) / string[-3:]: 인덱스 -3,-2,-1(끝 3글자)"},
+{n:30,s:"Python",q:"다음 Python 프로그램이 실행되었을 때의 결과는?\n\na = [\"대\", \"한\", \"민\", \"국\"]\nfor i in a:\n    print(i)",o:["대한민국 (한 줄)","대 / 한 / 민 / 국 (각 줄)","대대대대","(오류)"],a:1,e:"print(i): 각 요소 출력 후 자동 줄바꿈 → 4줄에 걸쳐 대, 한, 민, 국 각각 출력"},
+{n:31,s:"Python",q:"다음 Python 프로그램이 실행되었을 때의 결과는?\n\nclass FourCal:\n    def setdata(self, fir, sec):\n        self.fir = fir\n        self.sec = sec\n    def add(self):\n        result = self.fir + self.sec\n        return result\na = FourCal()\na.setdata(4, 2)\nprint(a.add())",o:["0","2","4","6"],a:3,e:"setdata(4,2) → fir=4, sec=2 / add() → 4+2=6 반환 → 출력 6"},
+{n:32,s:"Python",q:"다음 Python 코드의 실행 결과는?\n\na = 100\nlist_data = ['a','b','c']\ndict_data = {'a':90, 'b':95}\nprint(list_data[0])\nprint(dict_data['a'])",o:["a / 90","100 / 90","100 / 100","a / a"],a:0,e:"list_data[0]='a'(인덱스 0) / dict_data['a']=90(키 'a'의 값)"},
+{n:33,s:"Python",q:"실행 결과가 '20'이 되도록 ( ㉠ )에 들어갈 키워드는?\n\nx = 20\nif x == 10:\n    print('10')\n( ㉠ ) x == 20:\n    print('20')\nelse:\n    print('other')",o:["either","elif","else if","else"],a:1,e:"Python if-else if-else 구조: elif 사용 / else if는 Python 문법 아님"},
+{n:34,s:"Python",q:"'53t44'를 입력했을 때 다음 Python 코드의 출력 결과는?\n\na, b = map(int, input().split(\"t\"))\nprint(a, b)",o:["53 t 44","53t44","53 44","53, 44"],a:2,e:"split('t')→['53','44'] / map(int,...)→a=53,b=44 / print(a,b) 기본 sep=공백 → '53 44'"},
+{n:35,s:"Shell",q:"다음 쉘 스크립트의 의미로 옳은 것은?\n\nuntil who | grep wow\ndo\n    sleep 5\ndone",o:["wow 사용자가 로그인한 경우에만 반복문을 수행한다.","wow 사용자가 로그인할 때까지 반복문을 수행한다.","wow 문자열을 복사한다.","wow 사용자에 대한 정보를 무한 반복하여 출력한다."],a:1,e:"until: 조건 거짓인 동안 반복(while 반대) / wow 미로그인=거짓→반복, 로그인=참→종료"},
+{n:36,s:"SQL",q:"다음 SQL의 실행 결과로 옳은 것은?\n\n-- [도서]: (111,운영체제) (222,자료구조) (333,컴퓨터구조)\n-- [도서가격]: (111,20000) (222,25000) (333,10000) (444,15000)\n\nSELECT 가격 FROM 도서가격\nWHERE 책번호 = (SELECT 책번호 FROM 도서\n               WHERE 책명 = '자료구조');",o:["10,000","15,000","20,000","25,000"],a:3,e:"서브쿼리: 자료구조 책번호=222 / 메인쿼리: 책번호=222의 가격=25,000"},
+{n:37,s:"SQL",q:"학적 테이블에서 전화번호가 NULL이 아닌 학생명을 검색하는 SQL의 WHERE 절은?",o:["WHERE 전화번호 DON'T NULL","WHERE 전화번호 != NOT NULL","WHERE 전화번호 IS NOT NULL","WHERE 전화번호 IS NULL"],a:2,e:"NULL 비교는 IS NULL / IS NOT NULL 사용. !=, <> 등 비교 연산자로 NULL 비교 불가"},
+{n:38,s:"SQL",q:"다음 SQL의 실행 결과로 옳은 것은?\n\n-- [R1 학번]: 20201111, 20202222\n-- [R2 학번]: 20202222, 20203333\n\n(SELECT 학번 FROM R1)\nINTERSECT\n(SELECT 학번 FROM R2)",o:["두 테이블을 JOIN한 결과","학번 20202222 (한 행)","R1의 전체 학번","R2의 전체 학번"],a:1,e:"INTERSECT: 두 결과의 공통 행만 출력 / {20201111,20202222} ∩ {20202222,20203333} = {20202222}"},
+{n:39,s:"SQL",q:"다음 실행 결과(과목번호 C100,C200)를 얻기 위한 SQL문은?\n\n-- [R1]: (3000,강남길,전자공학,...)\n-- [R2]: (3000,C100,컴퓨터구조) (3000,C200,데이터베이스)",o:["SELECT 과목번호,과목이름 FROM R1,R2 WHERE R1.학번=R2.학번 AND 학과='전자공학' AND 이름='강남길'","SELECT ... OR 학과='전자공학' OR 이름='홍길동'","SELECT ... AND 학과='컴퓨터공학' AND 이름='강남길'","SELECT ... OR 학과='컴퓨터공학' OR 이름='홍길동'"],a:0,e:"강남길(3000)은 전자공학과 / R1.학번=R2.학번 조인 후 AND 조건 적용"},
+{n:40,s:"SQL",q:"'정도일'인 팀원과 같은 팀 이름을 출력하는 서브쿼리 ㉠은?\n\nSELECT 이름\nFROM 직원\nWHERE 팀코드 = ( ㉠ );",o:["WHERE 이름 = '정도일'","SELECT 팀코드 FROM 이름 WHERE 직원 = '정도일'","WHERE 직원 = '정도일'","SELECT 팀코드 FROM 직원 WHERE 이름 = '정도일'"],a:3,e:"서브쿼리 형식: SELECT 컬럼 FROM 테이블 WHERE 조건 / FROM 직원 WHERE 이름='정도일'"},
+{n:41,s:"SQL",q:"다음 SQL의 문법적 오류가 있는 행은?\n\n(1) SELECT player_name, height\n(2) FROM player\n(3) WHERE team_id = 'korea'\n(4) AND height BETWEEN 170 OR 180;",o:["(1)","(2)","(3)","(4)"],a:3,e:"BETWEEN 올바른 문법: BETWEEN A AND B / 오류: 'BETWEEN 170 OR 180' → 'BETWEEN 170 AND 180'"},
+{n:42,s:"SQL",q:"다음 SQL의 실행 결과로 옳은 것은?\n\n-- [R1]: 학번(1000~5000), 학년(1,1,2,2,3)\n\nSELECT DISTINCT 학년 FROM R1;",o:["학년 1, 1, 2, 2, 3 (중복 포함)","학년 1, 2, 3 (중복 제거)","이름과 학년 전체 표시","이름, 학년 일부 표시"],a:1,e:"DISTINCT: 중복 제거 / 학년 1,1,2,2,3 → 중복 제거 → 1, 2, 3 (3행)"},
+{n:43,s:"SQL",q:"다음 결과(대신공업사, 신촌상사)를 얻기 위한 WHERE 절은?\n\n-- [공급자]: 대신공업사(수원), 삼진사(서울), 삼양사(인천), 진아공업사(대전), 신촌상사(서울)",o:["WHERE 공급자명 LIKE '%신%'","WHERE 공급자명 LIKE '대%'","WHERE 공급자명 LIKE '%사'","WHERE 공급자명 IS NOT NULL"],a:0,e:"'%신%': '신' 포함 → 대신공업사, 신촌상사 / '대%': 대로 시작만 / '%사': 사로 끝나는 것 모두"},
+{n:44,s:"SQL",q:"다음 SQL의 실행 결과로 옳은 것은?\n\n-- [R1]: 홍길동(1000), 김철수(2000), 강남길(3000), 오말자(4000), 장미화(5000)\n-- [R2] 과목=C100 학번: 1000, 3000, 4000\n\nSELECT 이름 FROM R1\nWHERE 학번 IN (SELECT 학번 FROM R2\n               WHERE 과목번호 = 'C100');",o:["홍길동, 강남길, 장미화","홍길동, 강남길, 오말자","전체 학생","홍길동, 김철수"],a:1,e:"서브쿼리: C100 과목 학번={1000,3000,4000} / 메인: 해당 학번 이름=홍길동,강남길,오말자"},
+{n:45,s:"SQL",q:"다음 SQL 실행 시 생성되는 튜플 수는?\n\n-- <사원> 테이블: 101~105번 직원 5명\n\nSELECT 급여 FROM 사원;",o:["1","3","4","5"],a:3,e:"DISTINCT 없고 WHERE 없음 → 전체 레코드 반환 → 5개 튜플"},
+{n:46,s:"SQL",q:"다음 SQL의 실행 결과로 옳은 것은?\n\n-- [학생] 전산/전기이고 경기: 고영준(2000), 김영진(4000)\n-- [성적] 2000→DB, 4000→DB/운영체제\n\nSELECT 과목이름 FROM 성적\nWHERE EXISTS (\n    SELECT 학번 FROM 학생\n    WHERE 학생.학번=성적.학번\n    AND 학생.학과 IN ('전산','전기')\n    AND 학생.주소='경기');",o:["DB","DB (1행)","DB, 운영체제 (2행 이상)","결과 없음"],a:2,e:"조건 만족 학생: 2000(DB), 4000(DB,운영체제) → EXISTS로 해당 성적 과목이름 출력"},
+{n:47,s:"SQL",q:"강남지점의 판매량이 많은 제품부터 출력하는 SQL은?\n\n-- <푸드>: 강남(비빔밥500,도시락200,미역국550,잡채밥250), 강북,수원,인천 포함",o:["SELECT 제품명,판매량 FROM 푸드 ORDER BY 판매량 ASC","SELECT 제품명,판매량 FROM 푸드 ORDER BY 판매량 DESC","SELECT 제품명,판매량 FROM 푸드 WHERE 지점명='강남지점' ORDER BY 판매량 ASC","SELECT 제품명,판매량 FROM 푸드 WHERE 지점명='강남지점' ORDER BY 판매량 DESC"],a:3,e:"WHERE 지점명='강남지점': 강남 필터 / ORDER BY 판매량 DESC: 내림차순(많은 것부터)"},
+{n:48,s:"SQL",q:"다음 SQL의 실행 결과로 옳은 것은?\n\n-- [R] A열: 1, 3 / [S] A열: 1, 2\n\nSELECT A FROM R\nUNION ALL\nSELECT A FROM S;",o:["1, 3, 2 (중복 제거)","1, 3 (R만)","1, 3, 1, 2 (중복 포함)","1, 2 (S만)"],a:2,e:"UNION ALL: 중복 제거 없이 전체 합침 / R(1,3) + S(1,2) = 1,3,1,2 (4행)"},
+{n:49,s:"SQL",q:"다음 UPDATE 문의 ( ㉠ )에 들어갈 키워드는?\n\nUPDATE 회원 ( ㉠ ) 전화번호 = '010-14'\nWHERE 회원번호 = 'N4';",o:["FROM","SET","INTO","TO"],a:1,e:"UPDATE 문법: UPDATE 테이블 SET 컬럼=값 WHERE 조건 / SET으로 수정 컬럼과 값 지정"},
+{n:50,s:"SQL",q:"다음 BETWEEN 연산과 동일한 조건식은?\n\nWHERE (점수 BETWEEN 90 AND 95)",o:["점수 >= 90 AND 점수 <= 95","점수 > 90 AND 점수 < 95","점수 > 90 AND 점수 <= 95","점수 >= 90 AND 점수 < 95"],a:0,e:"BETWEEN A AND B = A 이상 B 이하 (경계값 포함) / >= A AND <= B"},
+{n:51,s:"SQL",q:"PARK 사용자에게 테이블 생성 권한을 부여하는 빈칸 ㉠은?\n\nGRANT [ ㉠ ] PARK;",o:["CREATE TABLE TO","CREATE TO","CREATE FROM","CREATE TABLE FROM"],a:0,e:"GRANT 권한 ON 객체 TO 사용자 / GRANT CREATE TABLE TO PARK"},
+{n:52,s:"SQL",q:"독일어과 50명, 중국어과 30명, 영어영문학과 50명일 때 각 SQL의 튜플 수는?\n\nⓐ SELECT DEPT FROM STUDENT;\nⓑ SELECT DISTINCT DEPT FROM STUDENT;",o:["ⓐ 3, ⓑ 3","ⓐ 50, ⓑ 3","ⓐ 130, ⓑ 3","ⓐ 130, ⓑ 130"],a:2,e:"ⓐ: 전체 학생 50+30+50=130행 / ⓑ: DISTINCT 중복 제거 → 학과 3개"},
+{n:53,s:"SQL",q:"STUDENT 테이블 갱신 권한을 PARK에게 부여하는 SQL의 ㉠, ㉡은?\n\nGRANT ㉠ ㉡ STUDENT TO PARK;",o:["㉠ INSERT, ㉡ INTO","㉠ ALTER, ㉡ TO","㉠ UPDATE, ㉡ ON","㉠ REPLACE, ㉡ IN"],a:2,e:"GRANT UPDATE ON STUDENT TO PARK / 갱신=UPDATE, 객체 지정=ON"},
+{n:54,s:"SQL",q:"V_1을 기반으로 V_2를 정의했을 때 다음 명령의 수행 결과는?\n\nDROP VIEW V_1 CASCADE;",o:["V_1만 삭제된다.","V_2만 삭제된다.","V_1과 V_2 모두 삭제된다.","V_1과 V_2 모두 삭제되지 않는다."],a:2,e:"CASCADE: 참조하는 모든 객체 함께 삭제 / V_2가 V_1 참조 → V_1 삭제 시 V_2도 삭제"},
+{n:55,s:"자료구조",q:"스택 삭제 알고리즘에서 ⓐ에 들어갈 내용은?\n\nif Top = 0 Then\n    ( ⓐ )\nElse {\n    remove S(Top)\n    Top = Top - 1\n}",o:["Overflow","Top = Top + 1","Underflow","Top = Top"],a:2,e:"Top=0: 스택 비어있음 / 빈 스택에서 삭제 시도 → Underflow / Overflow는 가득찰 때 삽입 시 발생"},
+{n:56,s:"SQL",q:"다음 관계 대수식을 SQL로 옳게 변환한 것은?\n\nπ이름(σ학과='교육'(학생))",o:["SELECT 학생 FROM 이름 WHERE 학과 = '교육'","SELECT 이름 FROM 학생 WHERE 학과 = '교육'","SELECT 교육 FROM 학과 WHERE 이름 = '학생'","SELECT 학과 FROM 학생 WHERE 이름 = '교육'"],a:1,e:"π이름 → SELECT 이름(프로젝션) / σ학과='교육' → WHERE 학과='교육'(셀렉션) / (학생) → FROM 학생"},
+{n:57,s:"SQL",q:"사용자 X1에게 department 테이블에 대한 검색 연산을 회수하는 SQL은?",o:["delete select on department to X1","remove select on department from X1","revoke select on department from X1","grant select on department from X1"],a:2,e:"REVOKE 권한 ON 객체 FROM 사용자(취소) / GRANT는 권한 부여(TO 사용자)"}
+];
+
+const PS=5;
+let cp=0,ua={};
+const ls=()=>{try{const d=localStorage.getItem('qcode57h');if(d)ua=JSON.parse(d);cp=parseInt(localStorage.getItem('qcode57hp')||'0');}catch(e){}};
+const ss=()=>{try{localStorage.setItem('qcode57h',JSON.stringify(ua));localStorage.setItem('qcode57hp',String(cp));}catch(e){}};
+const tp=()=>Math.ceil(Q.length/PS);
+const gq=()=>Q.slice(cp*PS,(cp+1)*PS);
+
+function upd(){
+  let t=Object.keys(ua).length,c=0,w=0;
+  Object.entries(ua).forEach(([k,v])=>{const q=Q.find(x=>String(x.n)===k);if(q){v===q.a?c++:w++;}});
+  document.getElementById('st').textContent=t;
+  document.getElementById('sc').textContent=c;
+  document.getElementById('sw').textContent=w;
+  document.getElementById('sr').textContent=Q.length-t;
+  document.getElementById('pbar').style.width=(t/Q.length*100)+'%';
+}
+
+function render(){
+  upd();
+  const qs=gq(),nm=['①','②','③','④'];
+  let h='';
+  qs.forEach(q=>{
+    const ans=ua[String(q.n)];
+    const done=ans!==undefined;
+    let qt=q.q.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const parts=qt.split('\n\n');
+    h+=`<div class="qcard">`;
+    h+=`<div class="qmeta"><span class="badge n">Q${q.n}</span><span class="badge">${q.s}</span></div>`;
+    h+=`<div class="qtext">${parts[0]}</div>`;
+    if(parts.length>1) h+=`<div class="code">${parts.slice(1).join('\n\n')}</div>`;
+    h+=`<div class="opts">`;
+    q.o.forEach((o,i)=>{
+      let cl='opt';
+      if(done){cl+=(i===q.a?' ok':(i===ans?' ng':' hi'));}
+      h+=`<button class="${cl}" ${done?'disabled':''} onclick="sel(${q.n},${i})">${nm[i]} ${o.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</button>`;
+    });
+    h+='</div>';
+    if(done&&q.e) h+=`<div class="explain">💡 ${q.e}</div>`;
+    h+='</div>';
+  });
+  document.getElementById('qa').innerHTML=h;
+  const t2=tp();
+  document.getElementById('pi').textContent=`${cp+1} / ${t2} 페이지`;
+  document.getElementById('bp').disabled=cp===0;
+  const last=cp===t2-1;
+  const bn=document.getElementById('bn');
+  bn.textContent=last?'결과 보기 🏁':'다음 ▶';
+  bn.onclick=last?showResult:()=>gp(1);
+}
+
+function sel(n,i){
+  if(ua[String(n)]!==undefined)return;
+  ua[String(n)]=i;ss();render();
+}
+
+function gp(d){
+  const np=cp+d;
+  if(np<0||np>=tp())return;
+  cp=np;ss();render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showResult(){
+  document.getElementById('qa').style.display='none';
+  document.querySelector('.nav').style.display='none';
+  document.getElementById('rarea').style.display='block';
+  let c=0;const wl=[];
+  Q.forEach(q=>{const a=ua[String(q.n)];if(a===q.a)c++;else if(a!==undefined)wl.push(q);});
+  const pct=Math.round(c/Q.length*100);
+  document.getElementById('rsc').textContent=`${c} / ${Q.length}`;
+  document.getElementById('rsb').textContent=`정답률 ${pct}%`;
+  const rv=document.getElementById('rv');
+  if(pct>=60){rv.textContent='🎉 훌륭합니다! 코드 추적 실력이 좋아요.';rv.className='verdict vp';}
+  else{rv.textContent='📚 60점 미만 — 코드를 직접 손으로 추적해 보세요!';rv.className='verdict vf';}
+  if(wl.length>0){
+    document.getElementById('wb').style.display='block';
+    const nm=['①','②','③','④'];
+    let wh='';
+    wl.forEach(q=>{
+      const my=ua[String(q.n)];
+      wh+=`<div class="witem">`;
+      wh+=`<div class="qmeta" style="margin-bottom:5px"><span class="badge n">Q${q.n}</span><span class="badge">${q.s}</span></div>`;
+      wh+=`<div class="wq">${q.q.split('\n\n')[0].replace(/&/g,'&amp;').replace(/</g,'&lt;').substring(0,100)}...</div>`;
+      wh+=`<div class="wa">내 답: <strong>${nm[my]} ${q.o[my].substring(0,30)}...</strong> → 정답: <strong style="color:#2a7d32">${nm[q.a]} ${q.o[q.a].substring(0,30)}...</strong></div>`;
+      if(q.e) wh+=`<div class="wex">💡 ${q.e}</div>`;
+      wh+='</div>';
+    });
+    document.getElementById('wl').innerHTML=wh;
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function reset(){
+  ua={};cp=0;ss();
+  document.getElementById('qa').style.display='';
+  document.querySelector('.nav').style.display='';
+  document.getElementById('rarea').style.display='none';
+  render();
+}
+
+ls();render();
+window.addEventListener('beforeunload',ss);
+</script>
+</body>
+</html>
