@@ -6,7 +6,11 @@
       "Bash(pdftotext \"/Users/nouyeong/Desktop/EngineerInformationProcessing/기출문제/2026 대비/정보처리기사필기_01_필수계산41문제.pdf\" \"/Users/nouyeong/Desktop/EngineerInformationProcessing/기출문제/2026 대비/정보처리기사필기_01_필수계산41문제.txt\")",
       "Bash(pdftotext '/Users/nouyeong/Desktop/EngineerInformationProcessing/기출문제/2026 대비/정보처리기사필기_01_필수계산41문제.pdf' -)",
       "Bash(pdftotext \"/Users/nouyeong/Desktop/EngineerInformationProcessing/기출문제/2026 대비/pdf/정보처리기사필기_02_필수코드57문제.pdf\" -)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git -C \"/Users/nouyeong/공기업 준비/EngineerInformationProcessing\" add \"노트/네트워크.md\" \"노트/데이터베이스.md\" \"노트/소프트웨어공학.md\")",
+      "Bash(git -C '/Users/nouyeong/공기업 준비/EngineerInformationProcessing' commit -m ' *)",
+      "Bash(git -C \"/Users/nouyeong/공기업 준비/EngineerInformationProcessing\" push)",
+      "Bash(git -C \"/Users/nouyeong/공기업 준비/EngineerInformationProcessing\" add \"노트/정보보안.md\")"
     ],
     "additionalDirectories": [
       "/Users/nouyeong/공기업 준비/EngineerInformationProcessing/기출문제/2026 대비/markdown"
