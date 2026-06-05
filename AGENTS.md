@@ -3,8 +3,8 @@
 이 파일에는 문서 인덱스만 작성한다. 
 
 
-- [프로젝트 개요](문서/프로젝트_개요.md)
-- [협업 방식](문서/협업_방식.md)
-- [커밋 푸시 규칙](문서/커밋_푸시_규칙.md)
-- [문서 작성 규칙](문서/문서_작성_규칙.md)
-- [기출문제 markdown 작성 규칙](문서/기출문제_markdown_작성_규칙.md)
+- [Project Overview](agents/project_overview.md)
+- [Collaboration Guide](agents/collaboration_guide.md)
+- [Commit Push Rules](agents/commit_push_rules.md)
+- [Document Writing Rules](agents/document_writing_rules.md)
+- [Past Exam Markdown Rules](agents/past_exam_markdown_rules.md)
