@@ -16,3 +16,27 @@
     * 안정성 / 신뢰성: 오류 추적 가능 
 
     * 자동화: 심각한 오류 외에는 사용자 개입 없이 수행  
+
+---
+
+### 시스템 연계 및 데이터 처리 (4)
+
+* EAI(Enterprise Application Integration)
+  * 기업 내 애플리케이션과 플랫폼 사이의 정보 전달, 연계, 통합을 가능하게 하는 솔루션
+  * 구현 방식
+    * Point-to-Point: 애플리케이션을 1:1로 직접 연결. 변경·재사용 어려움
+    * Hub & Spoke: 중앙 허브를 통해 데이터 전송. 확장·유지보수 용이, 허브 장애 시 전체 영향
+    * Message Bus(ESB): 미들웨어를 통해 애플리케이션 연계. 확장성·대용량 처리 우수
+    * Bus Hybrid: Hub & Spoke와 Message Bus를 혼합. 데이터 병목 최소화
+
+* ETP(Enterprise Transaction Processing)
+  * 주문, 결제, 예약 등 기업 업무 트랜잭션을 빠르고 정확하게 처리하는 방식 또는 시스템
+  * 데이터 무결성, 동시성, 장애 복구를 보장하는 것이 중요
+
+* API(Application Programming Interface)
+  * 애플리케이션이 다른 애플리케이션·운영체제·서비스의 기능이나 데이터를 사용할 수 있도록 정한 인터페이스
+  * 요청 형식, 응답 형식, 인증 방식, 호출 규칙 등을 정의
+
+* ETL(Extract, Transform, Load)
+  * 여러 원천 시스템에서 데이터를 추출(Extract)하고, 목적에 맞게 변환(Transform)한 뒤, 데이터 웨어하우스 등에 적재(Load)하는 과정
+  * 데이터 통합, 정제, 분석용 데이터 구축에 사용
