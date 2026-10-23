@@ -1,0 +1,4 @@
+interface:
+  display_name: "전산 100문항 모의시험"
+  short_description: "8개 전산 영역을 고르게 담은 5지선다 100문항과 정답·해설 생성"
+  default_prompt: "$cs-mock-exam-100 스킬로 8개 영역을 고르게 포함한 5지선다형 100문항 모의시험과 정답·해설지를 만들어줘."
